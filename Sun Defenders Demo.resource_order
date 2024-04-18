@@ -1,0 +1,23 @@
+{
+  "FolderOrderSettings":[
+    {"name":"Space_Shooter","order":1,"path":"folders/Levels/Space_Shooter.yy",},
+    {"name":"Space_Shooter_Objects","order":1,"path":"folders/Objects/Space_Shooter_Objects.yy",},
+    {"name":"Scripts","order":1,"path":"folders/Scripts.yy",},
+    {"name":"Tut_Sprites","order":1,"path":"folders/Sprites/Player/Character/Tut_Sprites.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"O_Camera","order":1,"path":"objects/O_Camera/O_Camera.yy",},
+    {"name":"O_Slope0","order":1,"path":"objects/O_Slope0/O_Slope0.yy",},
+    {"name":"O_Slope1","order":2,"path":"objects/O_Slope1/O_Slope1.yy",},
+    {"name":"O_Slope2","order":3,"path":"objects/O_Slope2/O_Slope2.yy",},
+    {"name":"O_Slope3","order":4,"path":"objects/O_Slope3/O_Slope3.yy",},
+    {"name":"rmInit","order":2,"path":"rooms/rmInit/rmInit.yy",},
+    {"name":"sPlayerJump","order":3,"path":"sprites/sPlayerJump/sPlayerJump.yy",},
+    {"name":"sPlayerRun","order":2,"path":"sprites/sPlayerRun/sPlayerRun.yy",},
+    {"name":"sPlayerWalk","order":1,"path":"sprites/sPlayerWalk/sPlayerWalk.yy",},
+    {"name":"SprSlope0","order":1,"path":"sprites/SprSlope0/SprSlope0.yy",},
+    {"name":"SprSlope1","order":2,"path":"sprites/SprSlope1/SprSlope1.yy",},
+    {"name":"SprSlope2","order":3,"path":"sprites/SprSlope2/SprSlope2.yy",},
+    {"name":"SprSlope3","order":4,"path":"sprites/SprSlope3/SprSlope3.yy",},
+  ],
+}
