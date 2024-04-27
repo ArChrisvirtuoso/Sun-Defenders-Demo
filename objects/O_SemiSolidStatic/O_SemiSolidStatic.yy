@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"O_Wall",
+  "%Name":"O_SemiSolidStatic",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"O_Wall",
+  "name":"O_SemiSolidStatic",
   "overriddenProperties":[],
   "parent":{
     "name":"Environments",
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"SprWalls",
-    "path":"sprites/SprWalls/SprWalls.yy",
+    "name":"sSemiSolidStatic",
+    "path":"sprites/sSemiSolidStatic/sSemiSolidStatic.yy",
   },
   "spriteMaskId":null,
   "visible":true,

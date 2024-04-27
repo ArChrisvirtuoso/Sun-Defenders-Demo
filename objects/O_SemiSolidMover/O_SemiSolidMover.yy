@@ -1,17 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"O_Wall",
+  "%Name":"O_SemiSolidMover",
   "eventList":[
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"O_Wall",
+  "name":"O_SemiSolidMover",
   "overriddenProperties":[],
   "parent":{
     "name":"Environments",
     "path":"folders/Objects/Platformer_Objects/Environments.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"O_SemiSolidStatic",
+    "path":"objects/O_SemiSolidStatic/O_SemiSolidStatic.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"SprWalls",
-    "path":"sprites/SprWalls/SprWalls.yy",
+    "name":"sSemiSolidMover",
+    "path":"sprites/sSemiSolidMover/sSemiSolidMover.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -11,9 +11,9 @@ function getControls()
 {
 	// keyboard Controls:
 		// Direction Inputs
-	key_left = keyboard_check(vk_left) + keyboard_check(ord("D"));
+	key_left = keyboard_check(vk_left) + keyboard_check(ord("A"));
 		key_left = clamp( key_left, 0 , 1);
-	key_right = keyboard_check(vk_right) + keyboard_check(ord("A"));
+	key_right = keyboard_check(vk_right) + keyboard_check(ord("D"));
 		key_right = clamp( key_right, 0, 1);
 	key_up = keyboard_check(vk_up) + keyboard_check(ord("W"));
 		key_up = clamp( key_up, 0, 1);
@@ -25,7 +25,7 @@ function getControls()
 		key_jump_pressed = clamp( key_jump_pressed, 0, 1);
 	key_jump = keyboard_check(vk_space);
 		key_jump = clamp(key_jump, 0, 1);
-	key_run = keyboard_check(ord("H")) + gamepad_button_check(0, gp_face3);
+	key_run = keyboard_check(vk_lshift) + gamepad_button_check(0, gp_face3);
 		key_run = clamp( key_run, 0, 1);
 
 	

@@ -7,6 +7,8 @@
   ],
   "ResourceOrderSettings":[
     {"name":"O_Camera","order":1,"path":"objects/O_Camera/O_Camera.yy",},
+    {"name":"O_SemiSolidMover","order":6,"path":"objects/O_SemiSolidMover/O_SemiSolidMover.yy",},
+    {"name":"O_SemiSolidStatic","order":5,"path":"objects/O_SemiSolidStatic/O_SemiSolidStatic.yy",},
     {"name":"O_Slope0","order":1,"path":"objects/O_Slope0/O_Slope0.yy",},
     {"name":"O_Slope1","order":2,"path":"objects/O_Slope1/O_Slope1.yy",},
     {"name":"O_Slope2","order":3,"path":"objects/O_Slope2/O_Slope2.yy",},
@@ -19,5 +21,8 @@
     {"name":"SprSlope1","order":2,"path":"sprites/SprSlope1/SprSlope1.yy",},
     {"name":"SprSlope2","order":3,"path":"sprites/SprSlope2/SprSlope2.yy",},
     {"name":"SprSlope3","order":4,"path":"sprites/SprSlope3/SprSlope3.yy",},
+    {"name":"sSemiSolidMover","order":7,"path":"sprites/sSemiSolidMover/sSemiSolidMover.yy",},
+    {"name":"sSemiSolidMover13","order":8,"path":"sprites/sSemiSolidMover13/sSemiSolidMover13.yy",},
+    {"name":"sSemiSolidStatic","order":6,"path":"sprites/sSemiSolidStatic/sSemiSolidStatic.yy",},
   ],
 }
