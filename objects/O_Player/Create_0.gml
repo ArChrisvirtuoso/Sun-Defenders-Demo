@@ -22,7 +22,7 @@ function semiSolidCheck (_x, _y)
 	if yspd >= 0 && place_meeting(_x, _y, O_SemiSolidStatic)
 	{
 		// Create DS list to store all colliding semi-solid wall instances
-		var _list = ds_list_create():
+		var _list = ds_list_create();
 		var _listSize = instance_place_list(_x, _y, O_SemiSolidStatic, _list, false)
 		
 		// Loop through colliding instances & return only one if top is below player
