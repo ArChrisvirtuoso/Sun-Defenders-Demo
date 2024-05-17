@@ -52,13 +52,13 @@ getControls();
 	// Move down slopes
 	downslope = noone;
 	if yspd >= 0 && !place_meeting( x + xSpd, y + 1, O_Wall) && place_meeting( x + xSpd, y + abs(xSpd)+1, O_Wall)
-	{
+	/*{
 		// Semi-solid blocked path check
 		downslope = semiSolidCheck( x + xSpd, y + abs(xSpd)+1)		
 		// Move down slope precisely if no semi-solid
 		if !instance_exists(downslope)
-		{ while !place_meeting(x + xSpd, y + _subPixel, O_Wall){ y += _subPixel }
-	}
+		{ while !place_meeting(x + xSpd, y + _subPixel, O_Wall){ y += _subPixel };
+	}*/
 
 	//Move
 	x += xSpd;
@@ -80,7 +80,7 @@ getControls();
 	
 	
 	
-	//Reset/ Prep jumpinng variables
+	//Reset/ Prep jumping variables
 	if onGround
 	{
 		jumpCount = 0;
@@ -117,6 +117,7 @@ getControls();
 		setOnGround(false);
 		
 	}
+	
 	// cut jump by button release
 	if !key_jump
 	{
@@ -256,6 +257,7 @@ getControls();
 	// X - myFloorPlat horizontal snapping
 		// Get MoveplatXspd
 		movePlatXspd = 0;
+		myFloorPLat = noone;
 		if instance_exists(myFloorPLat) { myFloorPLat = myFloorPLat.xSpd; };
 		
 		// moveplatXspd Move 
