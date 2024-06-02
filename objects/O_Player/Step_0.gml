@@ -1,8 +1,5 @@
 // Get Inputs
 getControls();
-	
-	// Set Collision Mask
-	mask_index = sPlayerIdle
 
 //Movement
 	//X Direction
@@ -52,13 +49,16 @@ getControls();
 	// Move down slopes
 	downslope = noone;
 	if yspd >= 0 && !place_meeting( x + xSpd, y + 1, O_Wall) && place_meeting( x + xSpd, y + abs(xSpd)+1, O_Wall)
-	/*{
+	{
 		// Semi-solid blocked path check
-		downslope = semiSolidCheck( x + xSpd, y + abs(xSpd)+1)		
-		// Move down slope precisely if no semi-solid
-		if !instance_exists(downslope)
-		{ while !place_meeting(x + xSpd, y + _subPixel, O_Wall){ y += _subPixel };
-	}*/
+		downslope = semiSolidCheck( x + xSpd, y + abs(xSpd) +1 );
+		
+		//Move down slope precisely if no semi-solid
+		if !instance_exists(downslope){ 
+			while !place_meeting( x + xSpd, y + _subPixel, O_Wall){ y += _subPixel };
+			}
+	}
+	
 
 	//Move
 	x += xSpd;
@@ -80,7 +80,7 @@ getControls();
 	
 	
 	
-	//Reset/ Prep jumping variables
+	//Reset/ Prep jumpinng variables
 	if onGround
 	{
 		jumpCount = 0;
@@ -101,7 +101,14 @@ getControls();
 		};
 		
 	// Initiate Jump 
-	if jumpKeyBuffered && jumpCount < jumpMax
+	var _floorIsSolid = false;
+	if instance_exists(myFloorPLat)
+	&& (myFloorPLat.object_index == O_Wall || object_is_ancestor(myFloorPLat.object_index, O_Wall))
+	{
+		_floorIsSolid = true;
+	}
+	
+	if jumpKeyBuffered && jumpCount < jumpMax && (!key_down || _floorIsSolid )
 	{
 		// Reset Buffer
 		jumpKeyBuffered = false;
@@ -117,7 +124,6 @@ getControls();
 		setOnGround(false);
 		
 	}
-	
 	// cut jump by button release
 	if !key_jump
 	{
@@ -200,7 +206,8 @@ getControls();
 			var _listInst = _list[| i];
 			
 			// Avoid Magnetism
-			if (_listInst.yspd <= yspd || instance_exists(myFloorPLat) )
+			if _listInst != forgetSemiSolid
+			&& (_listInst.yspd <= yspd || instance_exists(myFloorPLat) )
 			&& ( _listInst.yspd > 0 || place_meeting( x, y +1 + _clampYspd, _listInst) )
 			|| ( _listInst == _semiSolid  )//// (HIGH SPEED FIX)
 			{
@@ -250,15 +257,47 @@ getControls();
 			setOnGround(true);
 		}
 	
+	// Manually fall through semi-solid platform
+	if key_down && key_jump_pressed
+	{
+		// Make sure we have a semi-solid floor platform
+		if instance_exists(myFloorPLat)
+		&& ( myFloorPLat.object_index == O_SemiSolidStatic || object_is_ancestor(myFloorPLat.object_index, O_SemiSolidStatic))
+		{
+			// Check if possible to move below semi-solid
+			var _yCheck = max( 1, myFloorPLat.yspd +1 );
+			if !place_meeting( x, y +_yCheck, O_Wall)
+			{
+				// Move below platform
+				y += 1;
+				
+				// Inherit downward speed from floor platform so it doesn't catch player
+				yspd = _yCheck-1;
+				
+				// Forget this platform briefly to not get caught again
+				forgetSemiSolid = myFloorPLat;
+				
+				// No more floor platfrom
+				setOnGround(false);
+			}
+		}
+	}
+	
 	// Move
 	y += yspd;
+	
+	// Reset forgetSemiSolid variable
+	if instance_exists(forgetSemiSolid) && !place_meeting(x, y, forgetSemiSolid)
+	{
+		forgetSemiSolid = noone;
+	}
 	
 // Final Moving platform collsions and movement
 	// X - myFloorPlat horizontal snapping
 		// Get MoveplatXspd
 		movePlatXspd = 0;
 		myFloorPLat = noone;
-		if instance_exists(myFloorPLat) { myFloorPLat = myFloorPLat.xSpd; };
+		if instance_exists(myFloorPLat) { movePlatXspd = myFloorPLat.xSpd; };
 		
 		// moveplatXspd Move 
 		if place_meeting( x + movePlatXspd, y, O_Wall)
@@ -282,9 +321,10 @@ getControls();
 	// Y - MyFloorPlat vertical snapping
 	if instance_exists(myFloorPLat) 
 	&& (myFloorPLat.yspd != 0
+	|| myFloorplat.object_index == O_moveplat
+	|| object_is_ancestor( myFloorPlat.object_index, O_moveplat)
 	|| myFloorPLat.object_index == O_SemiSolidMover
 	|| object_is_ancestor(myFloorPLat.object_index, O_SemiSolidMover))
-		// Solid moving platform code || myFloorplat.object_index == O_MovePlat || object_is_ancestor( myFloorPlat.object_index, O_MovePlat)
 	{
 		// Snap to top of floor platform ( un-floor y variable to combat choppiness)
 		if !place_meeting( x, myFloorPLat.bbox_top, O_Wall )
@@ -321,4 +361,7 @@ getControls();
 	// Not moving
 	if xSpd == 0 { sprite_index = idleSpr; };
 	// in the air
-	if !onGround { sprite_index = jumpSpr };
+	if !onGround { sprite_index = jumpSpr; };
+	
+		// Set Collision Mask
+		mask_index = idleSpr;

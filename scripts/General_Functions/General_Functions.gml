@@ -47,7 +47,7 @@ function getControls()
 	pad_jump =  gamepad_button_check(0,gp_face1);
 		pad_jump = clamp( pad_jump, 0, 1);
 		
-			// Making keyboard and controller jump interchangeable
+			// Making keyboard and controller keys interchangeable
 			key_jump = key_jump || pad_jump;
 			key_jump_pressed = key_jump_pressed || pad_jump_pressed;
 		

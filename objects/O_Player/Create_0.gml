@@ -29,7 +29,7 @@ function semiSolidCheck (_x, _y)
 		for ( var i = 0; 1 < _listSize; i++ ) 
 		{
 			var _listInst = _list[ i];
-			if floor(bbox_bottom) <= ceil( _listInst.bbox_top - _listInst.yspd )
+			if _listInst != forgetSemiSolid && floor(bbox_bottom) <= ceil( _listInst.bbox_top - _listInst.yspd )
 			{
 				// Return semi-solid ID
 				_rtrn = _listInst;
@@ -93,5 +93,6 @@ jSpd[1] = -2.85;
 // Moving Platforms
 myFloorPLat = noone;
 downslope = noone;
+forgetSemiSolid = noone;
 movePlatXspd = 0;
 movePlatMaxYspd = termVel; // Can be adjusted above Terminal Velocity if needed. How fast the player follow a downwards moving platform.
